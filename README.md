@@ -1,9 +1,5 @@
 
-springboot + spirngmvc + mybatis(注释) + mysql + dubbo
-
-https://github.com/alibaba/dubbo
-
-暂时打包成 war的方式，进去项目根目录，命令：mvn clean package
+打包成 war的方式，进去项目根目录，命令：mvn clean package
 
 启动命令：nohup java -jar springboot.war > nohup.out &
 
