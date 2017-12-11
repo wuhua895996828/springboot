@@ -1,13 +1,15 @@
 package com.woody.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
+import com.alibaba.dubbo.config.annotation.Reference;
+import com.alibaba.dubbo.rpc.service.EchoService;
+import com.woody.service.DubboDemoService;
 import com.woody.service.UserService;
 
 @Controller
@@ -18,10 +20,8 @@ public class UserController {
 
 	@RequestMapping("/view")
 	@ResponseBody
-	public PageInfo<?> view() {
-		Page<?> page = PageHelper.startPage(1, 3);
-		userService.getUsers();
-		return new PageInfo<>(page);
+	public List<?> view() {
+		return userService.getUsers();
 	}
 
 	@RequestMapping("/demo/ok")
@@ -37,4 +37,25 @@ public class UserController {
 		throw new Exception();
 	}
 
+	@Reference
+	private DubboDemoService dubboDemoService;
+
+	@ResponseBody
+	@RequestMapping("dubbotest")
+	public String dubbotest() {
+		System.out.println(dubboDemoService.getClass());
+		System.out.println(dubboDemoService.sayHello());
+
+		EchoService echoService = (EchoService) dubboDemoService;
+		System.out.println(echoService.$echo("ok"));
+
+		return "success";
+	}
+
+	@ResponseBody
+	@RequestMapping("dubbotx")
+	public String dubbotx() throws Exception {
+		System.out.println("sayHello ==" + dubboDemoService.sayHello());
+		return "success";
+	}
 }

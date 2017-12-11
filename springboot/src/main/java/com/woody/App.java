@@ -11,7 +11,10 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.alibaba.dubbo.config.annotation.Service;
+import com.alibaba.dubbo.config.spring.context.annotation.DubboComponentScan;
 import com.woody.dao.UserDao;
+import com.woody.service.DubboDemoService;
 import com.woody.util.LogUtil;
 
 /**
@@ -24,9 +27,11 @@ import com.woody.util.LogUtil;
  *        =============启动类===========
  */
 @SpringBootApplication(exclude = ErrorMvcAutoConfiguration.class)
-@ImportResource(locations = { "classpath:dubbo.xml" })
+//@ImportResource(locations = { "classpath:dubbo.xml" })
+@DubboComponentScan(basePackages = { "com.woody" }, basePackageClasses = { Service.class })
 @EnableTransactionManagement
 @ServletComponentScan
+//@EnableJms
 public class App {
 
 	public static void main(String[] args) throws Exception {

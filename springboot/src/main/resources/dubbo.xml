@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" xmlns="http://www.springframework.org/schema/beans"
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" xmlns="http://www.springframework.org/schema/beans"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
 	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
@@ -15,12 +14,16 @@
 	<!-- 4）timeout注册中心请求超时时间(毫秒)。 -->
 	<!-- 5）address可以Zookeeper集群配置，地址可以多个以逗号隔开等。 -->
 	<!-- 使用multicast广播注册中心暴露发现服务地址 -->
-	<dubbo:registry address="zookeeper://120.79.7.181:2181"
-		check="true" subscribe="false" register="" timeout="3000"></dubbo:registry>
-	<!-- 要暴露的服务接口 -->
-	<dubbo:service interface="com.woody.service.TestRegistryService"
-		ref="testRegistryService" />
 
-	<!-- 生成远程服务代理，可以和本地bean一样使用demoService <dubbo:reference id="testRegistryService" 
-		check="false" interface="com.woody.service.TestRegistryService" /> -->
+
+	<dubbo:registry address="zookeeper://120.79.7.181:2181" check="true" subscribe="true" register="true" timeout="3000"></dubbo:registry>
+
+
+	<dubbo:consumer check="false"></dubbo:consumer>
+
+	<!-- 要暴露的服务接口 -->
+	<!-- <dubbo:service interface="com.woody.service.DubboDemoService" ref="dubboDemoServiceImpl" loadbalance="random" /> -->
+
+	<!-- 生成远程服务代理，可以和本地bean一样使用demoService -->
+	<dubbo:reference id="dubboDemoService" check="false" interface="com.woody.service.DubboDemoService" />
 </beans>  
