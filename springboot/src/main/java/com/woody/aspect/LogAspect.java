@@ -30,28 +30,28 @@ public class LogAspect {
 
 	@Before("pointcut()")
 	public void before() {
-		LogUtil.info("before");
+		// LogUtil.info("before");
 	}
 
 	@After("pointcut()")
 	public void after() {
-		LogUtil.info("after");
+		// LogUtil.info("after");
 	}
 
 	@AfterReturning(pointcut = "pointcut()", returning = "returnVal")
 	public void afterReturn(JoinPoint joinPoint, Object returnVal) {
-		System.out.println("AOP AfterReturning Advice:");
+		// System.out.println("AOP AfterReturning Advice:");
 	}
 
 	@AfterThrowing(pointcut = "pointcut()", throwing = "error")
 	public void afterThrowing(JoinPoint joinPoint, Throwable error) {
-		System.out.println("AfterThrowing...");
-		//LogUtil.error(error);
+		// System.out.println("AfterThrowing...");
+		// LogUtil.error(error);
 	}
 
 	@Around("pointcut()")
 	public Object around(ProceedingJoinPoint pjp) throws Throwable {
-		System.out.println("AOP Aronud");
+		// System.out.println("AOP Aronud");
 		Object object = pjp.proceed();
 		return object;
 	}

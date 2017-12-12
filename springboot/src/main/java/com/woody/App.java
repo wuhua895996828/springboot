@@ -8,13 +8,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.ImportResource;
+import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.alibaba.dubbo.config.annotation.Service;
 import com.alibaba.dubbo.config.spring.context.annotation.DubboComponentScan;
 import com.woody.dao.UserDao;
-import com.woody.service.DubboDemoService;
 import com.woody.util.LogUtil;
 
 /**
@@ -27,17 +26,24 @@ import com.woody.util.LogUtil;
  *        =============启动类===========
  */
 @SpringBootApplication(exclude = ErrorMvcAutoConfiguration.class)
-//@ImportResource(locations = { "classpath:dubbo.xml" })
+// @ImportResource(locations = { "classpath:dubbo.xml" })
 @DubboComponentScan(basePackages = { "com.woody" }, basePackageClasses = { Service.class })
 @EnableTransactionManagement
 @ServletComponentScan
-//@EnableJms
+// @EnableJms
 public class App {
 
 	public static void main(String[] args) throws Exception {
 
 		SpringApplication springApplication = new SpringApplication(App.class);
+
+		springApplication.setAdditionalProfiles("prod");
+
 		ConfigurableApplicationContext context = springApplication.run(args);
+
+		ConfigurableEnvironment environment = context.getEnvironment();
+
+		System.out.println("role.name" + environment.getProperty("role.name"));
 
 		DataSource dataSource = context.getBean(DataSource.class);
 		LogUtil.info(dataSource.getClass().toString());

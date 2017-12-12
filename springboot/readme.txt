@@ -10,4 +10,3 @@ https://github.com/alibaba/dubbo
 
 mybatis自动生成实体类，mapper ，配置文件： generatorConfig.xml
 进入项目根目录 ， 命令 : mvn mybatis-generator:generate
-

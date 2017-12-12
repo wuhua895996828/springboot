@@ -21,6 +21,7 @@ public class UserController {
 	@RequestMapping("/view")
 	@ResponseBody
 	public List<?> view() {
+		System.out.println("hello world");
 		return userService.getUsers();
 	}
 
