@@ -37,7 +37,7 @@ public class App {
 
 		SpringApplication springApplication = new SpringApplication(App.class);
 
-		springApplication.setAdditionalProfiles("prod");
+		//springApplication.setAdditionalProfiles("prod");
 
 		ConfigurableApplicationContext context = springApplication.run(args);
 
