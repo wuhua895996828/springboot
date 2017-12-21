@@ -23,8 +23,8 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDao userDao;
 
-	public List<User> getUsers( ){
-		return userDao.getUsers( );
+	public List<User> getUsers() {
+		return userDao.getUsers();
 	}
 
 	public int updateUser() throws Exception {
@@ -33,4 +33,11 @@ public class UserServiceImpl implements UserService {
 		return userDao.updateByPrimaryKeySelective(user);
 	}
 
+	public User getByUsername(String username) {
+		return userDao.getByUsername(username);
+	}
+
+	public String getRoleName(Long id) {
+		return userDao.getRoleName(id);
+	}
 }

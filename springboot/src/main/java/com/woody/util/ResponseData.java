@@ -27,10 +27,8 @@ public class ResponseData {
 	}
 
 	public ResponseData(ResponseDataEnum responseDataEnum) {
-		if (responseDataEnum != null) {
-			this.code = responseDataEnum.getCode();
-			this.msg = responseDataEnum.getMsg();
-		}
+		this.code = responseDataEnum.getCode();
+		this.msg = responseDataEnum.getMsg();
 	}
 
 	public String getMsg() {

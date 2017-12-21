@@ -13,8 +13,11 @@ import com.woody.domain.User;
  */
 public interface UserService {
 
-	List<User> getUsers( );
+	List<User> getUsers();
 
 	int updateUser() throws Exception;
 
+	User getByUsername(String username);
+
+	String getRoleName(Long id);
 }

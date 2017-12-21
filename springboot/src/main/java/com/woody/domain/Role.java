@@ -1,7 +1,5 @@
 package com.woody.domain;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
-
 /**
  * @Title: Role.java
  * @Package com.woody.domain
@@ -10,7 +8,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @date 2017年12月12日 下午2:06:51
  * @version V1.0
  */
-@ConfigurationProperties(prefix = "role")
 public class Role {
 
 	private String name;
