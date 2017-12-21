@@ -1,4 +1,4 @@
-package com.woody.configuration;
+package com.woody.configuration.web;
 
 import java.util.Properties;
 
@@ -19,10 +19,17 @@ import com.github.pagehelper.PageHelper;
 @SpringBootConfiguration
 public class MyWebMvcConfigurerAdapter extends WebMvcConfigurerAdapter {
 
+	/*
+	 * (non-Javadoc)
+	 * 注冊一個拦截器
+	 */
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new MyHandlerInterceptor()).addPathPatterns("/**");
 	}
 
+	/*
+	 * mybatis分頁
+	 */
 	@Bean
 	public PageHelper pageHelper() {
 		PageHelper pageHelper = new PageHelper();

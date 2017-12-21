@@ -1,4 +1,4 @@
-package com.woody.configuration;
+package com.woody.configuration.web;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

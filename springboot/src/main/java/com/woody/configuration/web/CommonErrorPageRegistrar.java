@@ -1,4 +1,4 @@
-package com.woody.configuration;
+package com.woody.configuration.web;
 
 import org.springframework.boot.web.servlet.ErrorPage;
 import org.springframework.boot.web.servlet.ErrorPageRegistrar;
@@ -18,6 +18,10 @@ import com.woody.util.Constant;
 @Component
 public class CommonErrorPageRegistrar implements ErrorPageRegistrar {
 
+	/*
+	 * (non-Javadoc)
+	 *  定义 400，500页面
+	 */
 	public void registerErrorPages(ErrorPageRegistry registry) {
 		ErrorPage page404 = new ErrorPage(HttpStatus.NOT_FOUND,Constant.PATH_404);
 		ErrorPage page500 = new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, Constant.PATH_500);
