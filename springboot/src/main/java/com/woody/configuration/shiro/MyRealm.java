@@ -32,7 +32,6 @@ public class MyRealm extends AuthorizingRealm {
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.apache.shiro.realm.AuthorizingRealm#doGetAuthorizationInfo(org.apache.shiro.subject.PrincipalCollection)
 	 * 配置权限
 	 */
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
@@ -48,10 +47,8 @@ public class MyRealm extends AuthorizingRealm {
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.apache.shiro.realm.AuthenticatingRealm#doGetAuthenticationInfo(org.apache.shiro.authc.AuthenticationToken)
 	 * 登陆认证
 	 */
-	
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken)
 			throws AuthenticationException {
 		String username = authenticationToken.getPrincipal().toString();
@@ -61,5 +58,4 @@ public class MyRealm extends AuthorizingRealm {
 		}
 		return new SimpleAuthenticationInfo(username, user.getPassword(), getName());
 	}
-
 }

@@ -28,8 +28,6 @@ public class ThrowableController {
 	public void handler(HttpServletRequest request, HttpServletResponse response, Throwable throwable)
 			throws Exception {
 
-		System.out.println("@ExceptionHandler");
-
 		ResponseData responseData = null;
 		String method = request.getMethod();
 		LogUtil.error(throwable);

@@ -11,7 +11,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.alibaba.dubbo.config.annotation.Service;
 import com.alibaba.dubbo.config.spring.context.annotation.DubboComponentScan;
 import com.woody.dao.UserDao;
 import com.woody.util.LogUtil;
@@ -27,7 +26,7 @@ import com.woody.util.LogUtil;
  */
 @SpringBootApplication(exclude = ErrorMvcAutoConfiguration.class)
 // @ImportResource(locations = { "classpath:dubbo.xml" })
-@DubboComponentScan(basePackages = { "com.woody" }, basePackageClasses = { Service.class })
+@DubboComponentScan(basePackages = "com.woody")
 @EnableTransactionManagement
 @ServletComponentScan
 // @EnableJms
@@ -37,7 +36,7 @@ public class App {
 
 		SpringApplication springApplication = new SpringApplication(App.class);
 
-		//springApplication.setAdditionalProfiles("prod");
+		// springApplication.setAdditionalProfiles("prod");
 
 		ConfigurableApplicationContext context = springApplication.run(args);
 
